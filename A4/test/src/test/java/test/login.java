@@ -1,7 +1,6 @@
 package test;
 
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -52,8 +51,10 @@ public class login {
 		WebElement login=driver.findElement(By.name("SubmitLogin"));
 		login.click();
 		}
-	@After
+	
 	public void logout() {
+		WebElement sing_out=driver.findElement(By.linkText("Sign out"));
+		sing_out.click();
 		driver.quit();
 		}
 }

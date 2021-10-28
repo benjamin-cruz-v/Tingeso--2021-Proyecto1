@@ -18,7 +18,7 @@ public class crear_cuenta {
 		driver.manage().window().maximize();
 		driver.get("http://automationpractice.com/index.php");
 	}
-	
+	//TC-015
 	@Test
 	public void crear_cuenta() throws InterruptedException {
 		WebElement login=driver.findElement(By.linkText("Sign in"));

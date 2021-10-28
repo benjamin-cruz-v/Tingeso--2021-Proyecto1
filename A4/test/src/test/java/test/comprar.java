@@ -16,6 +16,7 @@ private WebDriver driver;
 	
 	@Before
 	public void setUp() {
+		System.out.println("Inicio de test de Comprar:");
 		System.setProperty("webdriver.chrome.driver","./src/test/resources/driverChrome/chromedriver.exe");
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
@@ -30,26 +31,50 @@ private WebDriver driver;
 		login.click();
 	}
 	
+	//TC-023
+	//Test realizar una compra en la pagina web
 	@Test
-	public void comparar()  throws InterruptedException {
+	public void comprar()  throws InterruptedException {
 		WebElement women=driver.findElement(By.linkText("Women"));
 		women.click();
-		List<WebElement> links = driver.findElements(By.xpath(".//*[@class='product_list grid row']/li"));
-		WebElement ropa=links.get(0);
-		WebElement ropa2=links.get(1);
-		Thread.sleep(5000);
-		Actions actionProvider = new Actions(driver);
-	    actionProvider.moveToElement(ropa).build().perform();
-	    WebElement add_comparar=ropa.findElement(By.linkText("Add to Compare"));
-		add_comparar.click();
-		Actions actionProvider2 = new Actions(driver);
-		actionProvider2.moveToElement(ropa2).build().perform();
-		WebElement add_comparar2=ropa2.findElement(By.linkText("Add to Compare"));
-		add_comparar2.click();
+		WebElement producto=driver.findElement(By.linkText("Blouse"));
+		producto.click();
+		WebElement data=driver.findElement(By.xpath(".//*[@class='page-product-box']"));
+		if(data.isDisplayed()) {
+			System.out.println("Se ha seleccionado un producto");
+		}
+		else {
+			System.out.println("No se ha seleccionado un producto");
 
-		WebElement butom=driver.findElement(By.xpath(".//*[@class='btn btn-default button button-medium "
-				+ "bt_compare bt_compare']"));
-        butom.click();
+		}
+		WebElement add_car=driver.findElement(By.name("Submit"));
+		add_car.click();
+		Thread.sleep(7000);
+		WebElement checkout=driver.findElement(By.xpath(".//*[@class='btn btn-default button button-medium']"));
+		checkout.click();
+		WebElement checkout2=driver.findElement(By.linkText("Proceed to checkout"));
+		checkout2.click();
+		WebElement checkoutAddress=driver.findElement(By.name("processAddress"));
+		checkoutAddress.click();
+		WebElement terminos=driver.findElement(By.id("cgv"));
+		terminos.click();
+		WebElement processCarrier=driver.findElement(By.name("processCarrier"));
+		processCarrier.click();
+		WebElement pay=driver.findElement(By.xpath(".//*[@class='bankwire']"));
+		pay.click();
+		Thread.sleep(2000);
+		WebElement comfirmar=driver.findElement(By.xpath(".//*[@class='button btn btn-default button-medium']"));
+		comfirmar.click();
+		WebElement compra_realizada=driver.findElement(By.xpath(".//*[@class='box']"));
+		if(compra_realizada.isDisplayed()) {
+			System.out.println("Se confirma la compra del producto");
+
+		}
+		else {
+			System.out.println("Compra No realizada");
+
+		}
+		
 	}
 	
 	@After

@@ -14,7 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 
-public class Test_1 {
+public class productos {
 	private WebDriver driver;
 	
 	
