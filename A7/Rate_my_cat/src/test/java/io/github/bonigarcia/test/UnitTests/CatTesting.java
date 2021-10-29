@@ -1,4 +1,4 @@
-package io.github.bonigarcia.Test;
+package io.github.bonigarcia.test.UnitTests;
 import io.github.bonigarcia.*;
 
 import org.junit.jupiter.api.Test;
