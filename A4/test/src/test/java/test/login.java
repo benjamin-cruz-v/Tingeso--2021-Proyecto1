@@ -10,6 +10,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class login {
 	private WebDriver driver;
+	By cuenta= By.xpath(".//*[@class='account']");
+	By email_fail= By.xpath(".//*[@class='alert alert-danger']");
+
 	@Before
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver","./src/test/resources/driverChrome/chromedriver.exe");
@@ -28,7 +31,11 @@ public class login {
 	password.sendKeys("pass123");
 	WebElement login=driver.findElement(By.name("SubmitLogin"));
 	login.click();
+	if(driver.findElement(cuenta).isDisplayed()) {
+    	System.out.println("El login funciona con las credenciales, Ok");
+
 	}
+}
 	
 	@Test
 	public void email_fail() {
@@ -38,7 +45,11 @@ public class login {
 		create_email.sendKeys("correo_fail");
 		WebElement boton_create=driver.findElement(By.id("SubmitCreate"));
 		boton_create.click();
+		if(driver.findElement(email_fail).isDisplayed()) {
+	    	System.out.println("La prueba muestra el mensaje de error al usuario, Ok");
+
 		}
+	}
 	
 	@Test
 	public void login_fail() {
@@ -50,7 +61,11 @@ public class login {
 		password.sendKeys("pass000");
 		WebElement login=driver.findElement(By.name("SubmitLogin"));
 		login.click();
+		if(driver.findElement(email_fail).isDisplayed()) {
+	    	System.out.println("La prueba muestra el mensaje de error al usuario, Ok");
+
 		}
+	}
 	
 	public void logout() {
 		WebElement sing_out=driver.findElement(By.linkText("Sign out"));

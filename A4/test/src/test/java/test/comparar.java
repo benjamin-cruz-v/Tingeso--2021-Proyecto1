@@ -18,6 +18,8 @@ public class comparar {
 	private WebDriver driver;
 	By add_comparar=By.linkText("Add to Compare");
 	By add_comparar2=By.linkText("Add to Compare");
+	By columna_comparar=By.id("center_column");
+
 
 	@Before
 	public void setUp() {
@@ -61,11 +63,17 @@ public class comparar {
 				+ "bt_compare bt_compare']"));
         butom.click();
         
+        if(driver.findElement(columna_comparar).isDisplayed()) {
+	    	System.out.println("Test muetra a los productos en comparacion,Ok");
+	    }
+	    else {
+	    	System.out.println("Test No muestra la comparacion");
+	    }
 	}
 	
 	@After
 	public void setout() {
-		//driver.quit();
+		driver.quit();
 		}	
 
 }

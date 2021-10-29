@@ -16,7 +16,9 @@ import org.openqa.selenium.support.ui.Select;
 
 public class productos {
 	private WebDriver driver;
-	
+	By info_producto= By.xpath(".//*[@class='page-product-heading']");
+	By car_producto= By.id("cart_summary");
+
 	
 	@Before
 	public void setUp() {
@@ -42,12 +44,15 @@ public class productos {
 			actionProvider.moveToElement(ropa[numero]).build().perform();
 			WebElement add_comparar2=ropa[numero].findElement(By.linkText("More"));
 			add_comparar2.click();
+		if(driver.findElement(info_producto).isDisplayed()) {
+		    System.out.println("Se muestra informacion del producto, Ok");
+
+		}	
 	}
 	
 	
 	@Test
-	public void agregar_carro() {
-		
+	public void agregar_carro() throws InterruptedException {
 		WebElement women=driver.findElement(By.linkText("Women"));
 		women.click();
 		List<WebElement> links = driver.findElements(By.xpath(".//*[@class='product_list grid row']/li"));
@@ -60,13 +65,27 @@ public class productos {
 		int numero = (int) (Math.random() * size_link);
 		Actions actionProvider = new Actions(driver);
 		actionProvider.moveToElement(ropa[numero]).build().perform();
-		WebElement add_comparar2=ropa[numero].findElement(By.linkText("Add to cart"));
-		add_comparar2.click();
+		WebElement add=ropa[numero].findElement(By.linkText("Add to cart"));
+		add.click();
+		Thread.sleep(2000);
+		WebElement continuar_compra= driver.findElement(By.xpath(".//*[@title='Continue shopping']"));
+		continuar_compra.click();
+		WebElement car=driver.findElement(By.xpath(".//*[@title='View my shopping cart']"));
+		car.click();
+		if(driver.findElement(car_producto).isDisplayed()) {
+		    System.out.println("Producto se agrego al car, Ok");
+
+		}
+		else {
+		    System.out.println("Producto No se agrego al car");
+
+		}
+		
 	}
 
 	@After
 	public void tearDown() {
-		driver.quit();
+		//driver.quit();
 	}
 	
 	

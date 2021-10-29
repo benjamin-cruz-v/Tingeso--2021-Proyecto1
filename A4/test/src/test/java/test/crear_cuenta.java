@@ -11,12 +11,20 @@ import org.openqa.selenium.support.ui.Select;
 
 public class crear_cuenta {
 	private WebDriver driver;
+	String email="email_prueba2@gmail.com";
+	String name="Benjamin";
+	String lastnameS="Cruz";
+	String nombre=name + " " + lastnameS;
+	By login_name= By.linkText(nombre);
+	
 	@Before
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver","./src/test/resources/driverChrome/chromedriver.exe");
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("http://automationpractice.com/index.php");
+		System.out.println(nombre);
+
 	}
 	//TC-015
 	@Test
@@ -24,14 +32,14 @@ public class crear_cuenta {
 		WebElement login=driver.findElement(By.linkText("Sign in"));
 		login.click();
 		WebElement create_email=driver.findElement(By.name("email_create"));
-		create_email.sendKeys("email_prueba@gmail.com");
+		create_email.sendKeys(email);
 		WebElement boton_create=driver.findElement(By.id("SubmitCreate"));
 		boton_create.click();
 		Thread.sleep(10000);
 		WebElement first_name=driver.findElement(By.cssSelector("input[name='customer_firstname']"));
-		first_name.sendKeys("Benjamin");
+		first_name.sendKeys(name);
 	    WebElement lastname=driver.findElement(By.cssSelector("input[name='customer_lastname']"));
-	    lastname.sendKeys("Cruz");
+	    lastname.sendKeys(lastnameS);
 	    WebElement passwd=driver.findElement(By.cssSelector("input[name='passwd']"));
 	    passwd.sendKeys("pass123");
 	    WebElement company=driver.findElement(By.cssSelector("input[name='company']"));
@@ -52,6 +60,11 @@ public class crear_cuenta {
 	    other.sendKeys("Comprador serio");
 	    WebElement register=driver.findElement(By.id("submitAccount"));
 	    register.click();
+	    
+	    if(driver.findElement(login_name).isDisplayed()) {
+			System.out.println("Crear Cuenta ok");
+	    }
+	    
 	    
 		}
 	

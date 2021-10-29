@@ -12,7 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class contactar {
 	private WebDriver driver;
-	
+	By contacto= By.xpath(".//*[@class='alert alert-success']");
+	By contacto_fail= By.xpath(".//*[@class='alert alert-danger']");
+
 	@Before
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver","./src/test/resources/driverChrome/chromedriver.exe");
@@ -40,6 +42,10 @@ public class contactar {
 		WebDriverWait wait=new WebDriverWait(driver,100);
 		WebElement contacto_exisitoso=driver.findElement(By.id("center_column"));
 		wait.until(ExpectedConditions.visibilityOf(contacto_exisitoso));
+		if(driver.findElement(contacto).isDisplayed()) {
+	    	System.out.println("El mensaje se ha enviado, Ok");
+
+		}
 			
 	}
 	 
@@ -58,7 +64,11 @@ public class contactar {
 		WebDriverWait wait=new WebDriverWait(driver,100);
 		WebElement contacto_exisitoso=driver.findElement(By.id("center_column"));
 		wait.until(ExpectedConditions.visibilityOf(contacto_exisitoso));
+		if(driver.findElement(contacto_fail).isDisplayed()) {
+	    	System.out.println("La prueba muestra el mensaje de error al usuario, Ok");
+
 		}
+	}
 	 
 	@After
 	public void setout() {
