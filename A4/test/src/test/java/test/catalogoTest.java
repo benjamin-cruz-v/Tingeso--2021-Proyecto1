@@ -8,7 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class catalogo {
+
+public class catalogoTest {
 
 	private WebDriver driver;
 	
@@ -24,11 +25,12 @@ public class catalogo {
 	//TC-014
 	//Test que comprueba el funcionamiento del catalogo
 	@Test
-	public void catalogo() {
+	public void catalogo() throws InterruptedException {
 		WebElement women=driver.findElement(By.linkText("Women"));
 		women.click();
 		WebElement size=driver.findElement(By.name("layered_id_attribute_group_1"));
 		size.click();
+		Thread.sleep(5000);
 		WebElement check=driver.findElement(By.xpath(".//*[@class='checked']"));
 		if(check.isDisplayed()) {
 			System.out.println("Casilla de filtro size si funciona, Ok");
@@ -39,10 +41,13 @@ public class catalogo {
 
 		}
 		size.click();
+		Thread.sleep(3000);
 		WebElement color=driver.findElement(By.name("layered_id_attribute_group_13"));
 		color.click();
+		Thread.sleep(3000);
 		WebElement style=driver.findElement(By.name("layered_id_feature_11"));
 		style.click();
+		Thread.sleep(3000);
 		WebElement check2=driver.findElement(By.xpath(".//*[@class='checked']"));
 		if(check2.isDisplayed()) {
 			System.out.println("Casilla de filtro style si funciona, Ok");
@@ -53,8 +58,10 @@ public class catalogo {
 
 		}
 		style.click();
+		Thread.sleep(3000);
 		WebElement manufacturacion=driver.findElement(By.name("layered_manufacturer_1"));
 		manufacturacion.click();
+		Thread.sleep(3000);
 		WebElement check3=driver.findElement(By.xpath(".//*[@class='checked']"));
 		if(check3.isDisplayed()) {
 			System.out.println("Casilla de filtro manufacturacion si funciona, Ok");
@@ -65,6 +72,7 @@ public class catalogo {
 
 		}
 		manufacturacion.click();
+		Thread.sleep(3000);
 		
 		if(driver.findElement(producto).isDisplayed()) {
 			System.out.println("Casilla filtro color si muestra el producto, Ok");

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class contactar {
+public class contactarTest {
 	private WebDriver driver;
 	By contacto= By.xpath(".//*[@class='alert alert-success']");
 	By contacto_fail= By.xpath(".//*[@class='alert alert-danger']");
@@ -25,20 +25,25 @@ public class contactar {
 	
 	
 	 @Test
-	public void contactar() {
+	public void contactar() throws InterruptedException {
 		WebElement contact=driver.findElement(By.linkText("Contact us"));
 		contact.click();
+		Thread.sleep(3000);
 		Select id_contact = new Select (driver.findElement(By.id("id_contact")));
 		id_contact.selectByVisibleText("Customer service");
+		Thread.sleep(2000);
 		WebElement email=driver.findElement(By.id("email"));
 		email.sendKeys("benjamin.yokese5026@gmail.com");
+		Thread.sleep(2000);
 		WebElement id_order=driver.findElement(By.id("id_order"));
+		Thread.sleep(2000);
 		id_order.sendKeys("benjamin.yokese5026@gmail.com");
 		WebElement message=driver.findElement(By.id("message"));
 		message.sendKeys("Queja por producto no entregado......");
 		WebElement submitMessage=driver.findElement(By.id("submitMessage"));
 		submitMessage.click();
-			
+	    Thread.sleep(3000);
+
 		WebDriverWait wait=new WebDriverWait(driver,100);
 		WebElement contacto_exisitoso=driver.findElement(By.id("center_column"));
 		wait.until(ExpectedConditions.visibilityOf(contacto_exisitoso));
@@ -50,17 +55,21 @@ public class contactar {
 	}
 	 
 	@Test
-	public void contactar_fail() {
+	public void contactar_fail()  throws InterruptedException {
 		WebElement contact=driver.findElement(By.linkText("Contact us"));
 		contact.click();
+		Thread.sleep(3000);
 		Select id_contact = new Select (driver.findElement(By.id("id_contact")));
 		id_contact.selectByVisibleText("Customer service");
+		Thread.sleep(2000);
 		WebElement email=driver.findElement(By.id("email"));
 		email.sendKeys("benjamin.yokese5026@gmail.com");
 		WebElement id_order=driver.findElement(By.id("id_order"));
+		Thread.sleep(2000);
 		id_order.sendKeys("benjamin.yokese5026@gmail.com");
 		WebElement submitMessage=driver.findElement(By.id("submitMessage"));
 		submitMessage.click();
+		Thread.sleep(3000);
 		WebDriverWait wait=new WebDriverWait(driver,100);
 		WebElement contacto_exisitoso=driver.findElement(By.id("center_column"));
 		wait.until(ExpectedConditions.visibilityOf(contacto_exisitoso));

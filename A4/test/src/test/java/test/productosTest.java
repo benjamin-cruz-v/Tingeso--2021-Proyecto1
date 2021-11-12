@@ -14,7 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 
-public class productos {
+public class productosTest {
 	private WebDriver driver;
 	By info_producto= By.xpath(".//*[@class='page-product-heading']");
 	By car_producto= By.id("cart_summary");
@@ -32,6 +32,7 @@ public class productos {
 	public void ver_productos()  throws InterruptedException {
 		WebElement women=driver.findElement(By.linkText("Women"));
 		women.click();
+		Thread.sleep(3000);
 		List<WebElement> links = driver.findElements(By.xpath(".//*[@class='product_list grid row']/li"));
 		int size_link=links.size();
 		WebElement[] ropa=new WebElement[size_link] ;
@@ -39,11 +40,13 @@ public class productos {
 			ropa[i]=links.get(i);
 
 		}
+		Thread.sleep(3000);
 		int numero = (int) (Math.random() * size_link);
-			Actions actionProvider = new Actions(driver);
-			actionProvider.moveToElement(ropa[numero]).build().perform();
-			WebElement add_comparar2=ropa[numero].findElement(By.linkText("More"));
-			add_comparar2.click();
+		Actions actionProvider = new Actions(driver);
+		actionProvider.moveToElement(ropa[numero]).build().perform();
+		WebElement add_comparar2=ropa[numero].findElement(By.linkText("More"));
+		add_comparar2.click();
+		Thread.sleep(3000);
 		if(driver.findElement(info_producto).isDisplayed()) {
 		    System.out.println("Se muestra informacion del producto, Ok");
 
@@ -55,6 +58,7 @@ public class productos {
 	public void agregar_carro() throws InterruptedException {
 		WebElement women=driver.findElement(By.linkText("Women"));
 		women.click();
+		Thread.sleep(3000);
 		List<WebElement> links = driver.findElements(By.xpath(".//*[@class='product_list grid row']/li"));
 		int size_link=links.size();
 		WebElement[] ropa=new WebElement[size_link] ;
@@ -62,16 +66,19 @@ public class productos {
 			ropa[i]=links.get(i);
 
 		}
+		Thread.sleep(3000);
 		int numero = (int) (Math.random() * size_link);
 		Actions actionProvider = new Actions(driver);
 		actionProvider.moveToElement(ropa[numero]).build().perform();
 		WebElement add=ropa[numero].findElement(By.linkText("Add to cart"));
 		add.click();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		WebElement continuar_compra= driver.findElement(By.xpath(".//*[@title='Continue shopping']"));
 		continuar_compra.click();
+		Thread.sleep(3000);
 		WebElement car=driver.findElement(By.xpath(".//*[@title='View my shopping cart']"));
 		car.click();
+		Thread.sleep(3000);
 		if(driver.findElement(car_producto).isDisplayed()) {
 		    System.out.println("Producto se agrego al car, Ok");
 
