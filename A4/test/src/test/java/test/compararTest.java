@@ -1,7 +1,5 @@
 package test;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import org.junit.After;
@@ -43,21 +41,22 @@ public class compararTest {
 	    actionProvider.moveToElement(ropa).build().perform();
 	    if(driver.findElement(add_comparar).isDisplayed()) {
 	    	System.out.println("Test muestra opcion de comparar de producto 1,Ok");
+	    	driver.findElement(add_comparar).click();
 	    }
 	    else {
 	    	System.out.println("Test No muestra opcion de comparar de producto 1");
 	    }
-	    driver.findElement(add_comparar).click();
+	    
 	    Thread.sleep(2000);
 		Actions actionProvider2 = new Actions(driver);
 		actionProvider2.moveToElement(ropa2).build().perform();
 		if(driver.findElement(add_comparar2).isDisplayed()) {
 	    	System.out.println("Test muestra opcion de comparar de producto 2,Ok");
+	    	driver.findElement(add_comparar2).click();
 	    }
 	    else {
 	    	System.out.println("Test No muestra opcion de comparar de producto 2");
 	    }
-	    driver.findElement(add_comparar2).click();
 
 		WebElement butom=driver.findElement(By.xpath(".//*[@class='btn btn-default button button-medium "
 				+ "bt_compare bt_compare']"));

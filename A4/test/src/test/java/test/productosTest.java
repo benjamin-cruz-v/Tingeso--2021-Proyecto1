@@ -11,7 +11,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 
 
 public class productosTest {
@@ -92,34 +91,6 @@ public class productosTest {
 
 	@After
 	public void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
-	
-	
-	
-	/**
-	@Test
-	public void busqueda() {
-		WebElement search=driver.findElement(By.name("search_query"));
-		search.sendKeys("t-shirts");
-		WebElement buscar=driver.findElement(By.name("submit_search"));
-		buscar.click();
-		WebDriverWait wait=new WebDriverWait(driver,100);
-		WebElement busqueda=driver.findElement(By.id("center_column"));
-		wait.until(ExpectedConditions.visibilityOf(busqueda));
-		}
-	
-	@Test
-	public void busqueda_con_error() {
-		//driver.get("http://automationpractice.com/index.php");
-		WebElement search=driver.findElement(By.name("search_query"));
-		search.sendKeys("zapato");
-		WebElement buscar=driver.findElement(By.name("submit_search"));
-		buscar.click();
-		WebDriverWait wait=new WebDriverWait(driver,100);
-		WebElement busqueda_con_error=driver.findElement(By.className("heading-counter"));
-		wait.until(ExpectedConditions.visibilityOf(busqueda_con_error));
-		}
-**/
-	
 }

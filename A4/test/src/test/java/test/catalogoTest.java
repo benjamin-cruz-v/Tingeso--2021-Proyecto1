@@ -29,24 +29,32 @@ public class catalogoTest {
 		WebElement women=driver.findElement(By.linkText("Women"));
 		women.click();
 		WebElement size=driver.findElement(By.name("layered_id_attribute_group_1"));
-		size.click();
+		size.click();//Marcar la casilla S
 		Thread.sleep(5000);
 		WebElement check=driver.findElement(By.xpath(".//*[@class='checked']"));
 		if(check.isDisplayed()) {
 			System.out.println("Casilla de filtro size si funciona, Ok");
-
 		}
 		else {
 			System.out.println("Casilla filtro size no funciona");
 
 		}
-		size.click();
+		if(driver.findElement(By.xpath(".//*[@src='http://automationpractice.com/img/loader.gif']")).isDisplayed()) {
+			System.out.println("Esta cargando");
+		}
+		size.click(); //Desmarcar la casilla S
 		Thread.sleep(3000);
 		WebElement color=driver.findElement(By.name("layered_id_attribute_group_13"));
-		color.click();
+		color.click(); //Se filtra por color Beige
 		Thread.sleep(3000);
+		if(driver.findElement(producto).isDisplayed()) {
+			System.out.println("Casilla filtro color si muestra el producto, Ok");
+		}
+		else {
+			System.out.println("Casilla filtro color NO muestra el producto");
+		}
 		WebElement style=driver.findElement(By.name("layered_id_feature_11"));
-		style.click();
+		style.click();//Marcar la casilla Casual en styles
 		Thread.sleep(3000);
 		WebElement check2=driver.findElement(By.xpath(".//*[@class='checked']"));
 		if(check2.isDisplayed()) {
@@ -57,10 +65,10 @@ public class catalogoTest {
 			System.out.println("Casilla filtro style no funciona");
 
 		}
-		style.click();
+		style.click();//Desmarcar la casilla Casual en styles
 		Thread.sleep(3000);
 		WebElement manufacturacion=driver.findElement(By.name("layered_manufacturer_1"));
-		manufacturacion.click();
+		manufacturacion.click();//Marcar la casilla Fashion manufacturer en Manofacturer
 		Thread.sleep(3000);
 		WebElement check3=driver.findElement(By.xpath(".//*[@class='checked']"));
 		if(check3.isDisplayed()) {
@@ -71,16 +79,8 @@ public class catalogoTest {
 			System.out.println("Casilla filtro manufacturacion no funciona");
 
 		}
-		manufacturacion.click();
+		manufacturacion.click();//Desmarcar la casilla Fashion manufacturer en Manofacturer
 		Thread.sleep(3000);
-		
-		if(driver.findElement(producto).isDisplayed()) {
-			System.out.println("Casilla filtro color si muestra el producto, Ok");
-		}
-		else {
-			System.out.println("Casilla filtro color NO muestra el producto");
-
-		}
 	}
 	
 	@After
