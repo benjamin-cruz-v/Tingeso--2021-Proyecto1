@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class crearCuentaTest {
 	private WebDriver driver;
-	String email="email_prueba6@gmail.com"; //cambiar email con las pruebas.
+	String email="email_prueba9@gmail.com"; //cambiar email con las pruebas.
 	String name="Benjamin";
 	String lastnameS="Cruz";
 	String nombre=name + " " + lastnameS;
@@ -40,11 +40,14 @@ public class crearCuentaTest {
 		Thread.sleep(2000);
 		WebElement boton_create=driver.findElement(By.id("SubmitCreate"));
 		boton_create.click();
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		//Verificar si se probó con un email válido
-		
-		
-		
+		if( driver.getCurrentUrl().equals("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation") ) {
+			Assert.assertTrue(true);
+	    }else {
+	    	System.out.println("El mail ya esta registrado.");
+			Assert.assertTrue(false);
+	    }
 		WebElement first_name=driver.findElement(By.cssSelector("input[name='customer_firstname']"));
 		first_name.sendKeys(name);
 		Thread.sleep(2000);
