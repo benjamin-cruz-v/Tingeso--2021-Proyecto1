@@ -56,7 +56,7 @@ public class productosTest {
 		}
 	}
 	
-	
+	//TC - 022 Añadir un producto al carrito
 	@Test
 	public void agregar_carro() throws InterruptedException {
 		WebElement women=driver.findElement(By.linkText("Women"));
