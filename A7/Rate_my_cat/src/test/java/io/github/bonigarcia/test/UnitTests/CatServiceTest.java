@@ -14,21 +14,35 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CatServiceTest {
 
-    @DisplayName("Verificación de cantidad de objetos de gatos en CatRepository")
+    @DisplayName("Test de cantidad de objetos Cat en CatRepository")
     @Test
     void getCatCount() {
         CatRepository catRepositoryMock = Mockito.mock(CatRepository.class); //Objeto Mock
         CatService catService = new CatService(catRepositoryMock);
-
         Cat gatusso = new Cat("gatusso","picture.jpg");
         Cat gaturro = new Cat("gaturro","picture2.jpg");
-
+        //se crea una lista y se añaden los objetos Cat a esta
         ArrayList<Cat> cats = new ArrayList<>();
         cats.add(gatusso);
         cats.add(gaturro);
-
         when(catRepositoryMock.findAll()).thenReturn(cats);
-
+        //Verificación
         assertEquals(2,catService.getCatCount());
     }
+
+
+    @DisplayName("Test de rating promedio de un gato (objeto Cat)")
+    @Test
+    void rateCat(){
+        CatRepository catRepositoryMock = Mockito.mock(CatRepository.class); //Objeto Mock
+        CatService catService = new CatService(catRepositoryMock);
+        //se instancia un objeto Cat
+        Cat gato = new Cat("gato","picture3.jpg");
+        //dos rating para el gato
+        catService.rateCat(2,gato);
+        catService.rateCat(4,gato);
+        //Verificación
+        assertEquals(3,gato.getAverageRate());
+    }
+    
 }
