@@ -23,7 +23,7 @@ public class contactarTest {
 		driver.get("http://automationpractice.com/index.php");
 	}
 	
-	
+	//TC - 013 Enviar un mensaje valido a contacto
 	 @Test
 	public void contactar() throws InterruptedException {
 		WebElement contact=driver.findElement(By.linkText("Contact us"));
@@ -54,6 +54,7 @@ public class contactarTest {
 			
 	}
 	 
+	//TC - 021 Enviar un mensaje vacio a contacto
 	@Test
 	public void contactar_fail()  throws InterruptedException {
 		WebElement contact=driver.findElement(By.linkText("Contact us"));
@@ -67,7 +68,7 @@ public class contactarTest {
 		WebElement id_order=driver.findElement(By.id("id_order"));
 		Thread.sleep(2000);
 		id_order.sendKeys("benjamin.yokese5026@gmail.com");
-		WebElement submitMessage=driver.findElement(By.id("submitMessage"));
+		WebElement submitMessage=driver.findElement(By.id("submitMessage")); //Aqui se envia el mensaje pero no se le envia la key con el mensaje.
 		submitMessage.click();
 		Thread.sleep(3000);
 		WebDriverWait wait=new WebDriverWait(driver,100);

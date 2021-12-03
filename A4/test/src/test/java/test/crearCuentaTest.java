@@ -11,11 +11,12 @@ import org.openqa.selenium.support.ui.Select;
 
 public class crearCuentaTest {
 	private WebDriver driver;
-	String email="email_prueba4@gmail.com";
+	String email="email_prueba6@gmail.com"; //cambiar email con las pruebas.
 	String name="Benjamin";
 	String lastnameS="Cruz";
 	String nombre=name + " " + lastnameS;
 	By login_name= By.linkText(nombre);
+	By email_fail= By.xpath(".//*[@class='alert alert-danger']");
 	
 	@Before
 	public void setUp() {
@@ -23,10 +24,11 @@ public class crearCuentaTest {
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("http://automationpractice.com/index.php");
-		System.out.println(nombre);
 
 	}
-	//TC-015
+	
+	
+	//TC-015 Crear una cuenta valida.
 	@Test
 	public void crear_cuenta() throws InterruptedException {
 		WebElement login=driver.findElement(By.linkText("Sign in"));
@@ -38,6 +40,10 @@ public class crearCuentaTest {
 		WebElement boton_create=driver.findElement(By.id("SubmitCreate"));
 		boton_create.click();
 		Thread.sleep(10000);
+		//Verificar si se probó con un email válido
+		
+		
+		
 		WebElement first_name=driver.findElement(By.cssSelector("input[name='customer_firstname']"));
 		first_name.sendKeys(name);
 		Thread.sleep(2000);
@@ -62,14 +68,20 @@ public class crearCuentaTest {
 	    WebElement postcode=driver.findElement(By.cssSelector("input[name='postcode']"));
 	    postcode.sendKeys("00000");
 		Thread.sleep(2000);
-	    WebElement phone=driver.findElement(By.cssSelector("input[name='phone']"));
+	    WebElement phone=driver.findElement(By.cssSelector("input[name='phone_mobile']"));
 	    phone.sendKeys("+5631951578");
 		Thread.sleep(2000);
-	    Select Country = new Select (driver.findElement(By.id("id_state")));
-	    Country.selectByVisibleText("Alaska");
+	    Select State = new Select (driver.findElement(By.id("id_state")));
+	    State.selectByVisibleText("Alaska");
+		Thread.sleep(2000);
+		Select Country = new Select (driver.findElement(By.id("id_country")));
+	    Country.selectByVisibleText("United States");
 		Thread.sleep(2000);
 	    WebElement other=driver.findElement(By.name("other"));
 	    other.sendKeys("Comprador serio");
+		Thread.sleep(2000);
+		WebElement alias=driver.findElement(By.name("alias"));
+	    alias.sendKeys("SoyMuySerio99");
 		Thread.sleep(2000);
 	    WebElement register=driver.findElement(By.id("submitAccount"));
 	    register.click();
@@ -80,11 +92,28 @@ public class crearCuentaTest {
 	    
 	    
 		}
+		
+		
+	// TC-019 crear una cuenta con email inválido.
+	@Test
+	public void email_fail() throws InterruptedException {
+		WebElement login=driver.findElement(By.linkText("Sign in"));
+		login.click();
+		Thread.sleep(3000);
+		WebElement create_email=driver.findElement(By.name("email_create"));
+		create_email.sendKeys("correo_fail");
+		Thread.sleep(2000);
+		WebElement boton_create=driver.findElement(By.id("SubmitCreate"));
+		boton_create.click();
+		Thread.sleep(2000);
+		if(driver.findElement(email_fail).isDisplayed()) {
+	    	System.out.println("La prueba muestra el mensaje de error al usuario, Ok");
+
+		}
+	}
 	
 	@After
 	public void setout() {
-		WebElement sing_out=driver.findElement(By.linkText("Sign out"));
-		sing_out.click();
 		driver.quit();
 		}
 
