@@ -1,6 +1,7 @@
 package test;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -21,8 +22,9 @@ public class loginTest {
 		driver.manage().window().maximize();
 		driver.get("http://automationpractice.com/index.php");
 	}
-
-	@Test //Test TC-016 Ingresar con una cuenta registrada.
+	
+	//Test TC-016 Ingresar con una cuenta registrada.
+	@Test 
 	public void login() throws InterruptedException {
 		WebElement sig_in=driver.findElement(By.linkText("Sign in"));
 		sig_in.click();
@@ -38,11 +40,14 @@ public class loginTest {
 		Thread.sleep(4000);
 		if(driver.findElement(cuenta).isDisplayed()) {
 			System.out.println("El login funciona con las credenciales, Ok");
-
+			Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
 		}
 	}
 	
-	
+	//TC-018 Probar credenciales no registradas.
 	@Test
 	public void login_fail() throws InterruptedException {
 		WebElement sig_in=driver.findElement(By.linkText("Sign in"));
@@ -59,11 +64,14 @@ public class loginTest {
 		Thread.sleep(4000);
 		if(driver.findElement(email_fail).isDisplayed()) {
 	    	System.out.println("La prueba muestra el mensaje de error al usuario, Ok");
-
+	    	Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
 		}
 	}
-	
-	@Test //TC-017 Cerrar una sesión abierta.
+	//TC-017 Cerrar una sesión abierta.
+	@Test 
 	public void logout()  throws InterruptedException{
 		WebElement sig_in=driver.findElement(By.linkText("Sign in"));
 		sig_in.click();
@@ -82,8 +90,12 @@ public class loginTest {
 		Thread.sleep(4000);
 		if(driver.findElement(ingresar).isDisplayed()) {
 			System.out.println("El logout funciona, Ok");
-			}
+			Assert.assertTrue(true);
 		}
+		else {
+			Assert.assertTrue(false);
+		}
+	}
 	
 	@After
 	public void setout() {

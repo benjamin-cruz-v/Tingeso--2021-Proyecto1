@@ -1,6 +1,7 @@
 package test;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -45,9 +46,11 @@ private WebDriver driver;
 		WebElement data=driver.findElement(By.xpath(".//*[@class='page-product-box']"));
 		if(data.isDisplayed()) {
 			System.out.println("Se ha seleccionado un producto");
+			Assert.assertTrue(true);
 		}
 		else {
 			System.out.println("No se ha seleccionado un producto");
+			Assert.assertTrue(false);
 
 		}
 		WebElement add_car=driver.findElement(By.name("Submit"));
@@ -77,10 +80,12 @@ private WebDriver driver;
 		WebElement compra_realizada=driver.findElement(By.xpath(".//*[@class='box']"));
 		if(compra_realizada.isDisplayed()) {
 			System.out.println("Se confirma la compra del producto");
+			Assert.assertTrue(true);
 
 		}
 		else {
 			System.out.println("Compra No realizada");
+			Assert.assertTrue(false);
 
 		}
 		

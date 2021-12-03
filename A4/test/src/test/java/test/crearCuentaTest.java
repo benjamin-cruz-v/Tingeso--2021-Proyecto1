@@ -1,6 +1,7 @@
 package test;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -88,10 +89,14 @@ public class crearCuentaTest {
 	    Thread.sleep(2000);
 	    if(driver.findElement(login_name).isDisplayed()) {
 			System.out.println("Crear Cuenta ok");
+			Assert.assertTrue(true);
+	    }
+	    else {
+	    	Assert.assertTrue(false);
 	    }
 	    
 	    
-		}
+	}
 		
 		
 	// TC-019 crear una cuenta con email inválido.
@@ -108,7 +113,10 @@ public class crearCuentaTest {
 		Thread.sleep(2000);
 		if(driver.findElement(email_fail).isDisplayed()) {
 	    	System.out.println("La prueba muestra el mensaje de error al usuario, Ok");
-
+	    	Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
 		}
 	}
 	

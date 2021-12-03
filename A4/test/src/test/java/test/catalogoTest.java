@@ -1,6 +1,7 @@
 package test;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -31,17 +32,17 @@ public class catalogoTest {
 		WebElement size=driver.findElement(By.name("layered_id_attribute_group_1"));
 		size.click();//Marcar la casilla S
 		Thread.sleep(5000);
-		WebElement check=driver.findElement(By.xpath(".//*[@class='checked']"));
+		WebElement check=driver.findElement(By.xpath(".//*[@src='http://automationpractice.com/img/loader.gif']"));
 		if(check.isDisplayed()) {
 			System.out.println("Casilla de filtro size si funciona, Ok");
+			Assert.assertTrue(true);
 		}
 		else {
-			System.out.println("Casilla filtro size no funciona");
+			System.out.println("Casilla filtro size no funciona, no muestra productos");
+			Assert.assertTrue(false);
 
 		}
-		if(driver.findElement(By.xpath(".//*[@src='http://automationpractice.com/img/loader.gif']")).isDisplayed()) {
-			System.out.println("Esta cargando");
-		}
+		
 		size.click(); //Desmarcar la casilla S
 		Thread.sleep(3000);
 		WebElement color=driver.findElement(By.name("layered_id_attribute_group_13"));
@@ -49,20 +50,26 @@ public class catalogoTest {
 		Thread.sleep(3000);
 		if(driver.findElement(producto).isDisplayed()) {
 			System.out.println("Casilla filtro color si muestra el producto, Ok");
+			Assert.assertTrue(true);
 		}
 		else {
-			System.out.println("Casilla filtro color NO muestra el producto");
+			System.out.println("Casilla filtro size no funciona, no muestra productos");
+			Assert.assertTrue(false);
+
 		}
 		WebElement style=driver.findElement(By.name("layered_id_feature_11"));
 		style.click();//Marcar la casilla Casual en styles
 		Thread.sleep(3000);
-		WebElement check2=driver.findElement(By.xpath(".//*[@class='checked']"));
+		WebElement check2=driver.findElement(By.xpath(".//*[@src='http://automationpractice.com/img/loader.gif']"));
 		if(check2.isDisplayed()) {
 			System.out.println("Casilla de filtro style si funciona, Ok");
+			Assert.assertTrue(true);
 
 		}
 		else {
-			System.out.println("Casilla filtro style no funciona");
+			System.out.println("Casilla filtro size no funciona, no muestra productos");
+			Assert.assertTrue(false);
+
 
 		}
 		style.click();//Desmarcar la casilla Casual en styles
@@ -70,13 +77,15 @@ public class catalogoTest {
 		WebElement manufacturacion=driver.findElement(By.name("layered_manufacturer_1"));
 		manufacturacion.click();//Marcar la casilla Fashion manufacturer en Manofacturer
 		Thread.sleep(3000);
-		WebElement check3=driver.findElement(By.xpath(".//*[@class='checked']"));
+		WebElement check3=driver.findElement(By.xpath(".//*[@src='http://automationpractice.com/img/loader.gif']"));
 		if(check3.isDisplayed()) {
 			System.out.println("Casilla de filtro manufacturacion si funciona, Ok");
+			Assert.assertTrue(true);
 
 		}
 		else {
-			System.out.println("Casilla filtro manufacturacion no funciona");
+			System.out.println("Casilla filtro size no funciona, no muestra productos");
+			Assert.assertTrue(false);
 
 		}
 		manufacturacion.click();//Desmarcar la casilla Fashion manufacturer en Manofacturer

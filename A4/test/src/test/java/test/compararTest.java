@@ -3,6 +3,7 @@ package test;
 import java.util.List;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -42,9 +43,11 @@ public class compararTest {
 	    if(driver.findElement(add_comparar).isDisplayed()) {
 	    	System.out.println("Test muestra opcion de comparar de producto 1,Ok");
 	    	driver.findElement(add_comparar).click();
+	    	Assert.assertTrue(true);
 	    }
 	    else {
 	    	System.out.println("Test No muestra opcion de comparar de producto 1");
+	    	Assert.assertTrue(false);
 	    }
 	    
 	    Thread.sleep(2000);
@@ -53,9 +56,11 @@ public class compararTest {
 		if(driver.findElement(add_comparar2).isDisplayed()) {
 	    	System.out.println("Test muestra opcion de comparar de producto 2,Ok");
 	    	driver.findElement(add_comparar2).click();
+	    	Assert.assertTrue(true);
 	    }
 	    else {
 	    	System.out.println("Test No muestra opcion de comparar de producto 2");
+	    	Assert.assertTrue(false);
 	    }
 
 		WebElement butom=driver.findElement(By.xpath(".//*[@class='btn btn-default button button-medium "
@@ -64,9 +69,11 @@ public class compararTest {
         Thread.sleep(5000);
         if(driver.findElement(columna_comparar).isDisplayed()) {
 	    	System.out.println("Test muetra a los productos en comparacion,Ok");
+	    	Assert.assertTrue(true);
 	    }
 	    else {
 	    	System.out.println("Test No muestra la comparacion");
+	    	Assert.assertTrue(false);
 	    }
 	}
 	

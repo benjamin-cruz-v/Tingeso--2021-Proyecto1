@@ -4,6 +4,7 @@ package test;
 import java.util.List;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -26,7 +27,7 @@ public class productosTest {
 		driver.manage().window().maximize();
 		driver.get("http://automationpractice.com/index.php");
 	}
-		
+	//TC - 020 Mostrar detalles de un producto en la página web
 	@Test
 	public void ver_productos()  throws InterruptedException {
 		WebElement women=driver.findElement(By.linkText("Women"));
@@ -48,8 +49,11 @@ public class productosTest {
 		Thread.sleep(3000);
 		if(driver.findElement(info_producto).isDisplayed()) {
 		    System.out.println("Se muestra informacion del producto, Ok");
-
-		}	
+		    Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
+		}
 	}
 	
 	
@@ -80,10 +84,11 @@ public class productosTest {
 		Thread.sleep(3000);
 		if(driver.findElement(car_producto).isDisplayed()) {
 		    System.out.println("Producto se agrego al car, Ok");
-
+		    Assert.assertTrue(true);
 		}
 		else {
 		    System.out.println("Producto No se agrego al car");
+		    Assert.assertTrue(false);
 
 		}
 		

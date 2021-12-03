@@ -1,5 +1,6 @@
 package test;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -49,7 +50,11 @@ public class contactarTest {
 		wait.until(ExpectedConditions.visibilityOf(contacto_exisitoso));
 		if(driver.findElement(contacto).isDisplayed()) {
 	    	System.out.println("El mensaje se ha enviado, Ok");
+	    	Assert.assertTrue(true);
 
+		}
+		else {
+			Assert.assertTrue(false);
 		}
 			
 	}
@@ -76,7 +81,10 @@ public class contactarTest {
 		wait.until(ExpectedConditions.visibilityOf(contacto_exisitoso));
 		if(driver.findElement(contacto_fail).isDisplayed()) {
 	    	System.out.println("La prueba muestra el mensaje de error al usuario, Ok");
-
+	    	Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertTrue(false);
 		}
 	}
 	 
