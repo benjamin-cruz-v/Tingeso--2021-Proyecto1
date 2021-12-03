@@ -14,8 +14,8 @@
     <hashTree>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="Spike" enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="-358960510">
-            <stringProp name="1507423">1000</stringProp>
+          <collectionProp name="952932450">
+            <stringProp name="1542019">2500</stringProp>
             <stringProp name="1567">10</stringProp>
             <stringProp name="51">3</stringProp>
             <stringProp name="53">5</stringProp>
