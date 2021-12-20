@@ -1,8 +1,6 @@
 package io.github.bonigarcia.test.UnitTests;
 
-import io.github.bonigarcia.Cat;
-import io.github.bonigarcia.CatRepository;
-import io.github.bonigarcia.CatService;
+import io.github.bonigarcia.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -44,5 +42,19 @@ class CatServiceTest {
         //Verificación
         assertEquals(3,gato.getAverageRate());
     }
-    
+
+    @DisplayName("Test de verificación que gatos no se guardan a menos que haya un objeto Logger involucrado")
+    @Test
+    void saveCat() {
+        CatRepository catRepositoryMock = Mockito.mock(CatRepository.class); //Objeto Mock
+        CatService catService = new CatService(catRepositoryMock);
+
+        Cat pelusa = new Cat("pelusa","picture0.jpg");
+        Cat michi = new Cat("michi","picture1.jpg");
+
+        catService.saveCat(pelusa);
+        catService.saveCat(michi);
+
+        assertEquals(catService.getCatCount(),0);
+    }
 }
